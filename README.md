@@ -1,6 +1,6 @@
 # Monte Carlo financial models on Amazon F1 instances
 ## Introduction
-This repository includes F1-optimized implementations of four Monte Carlo financial models, namely:
+This repository includes F1-optimized implementations of four Monte Carlo financial models, in one folder for each model, namely:
   - the European and the Asian options of the the [Black-Scholes model](https://github.com/KitAway/BlackScholes_MonteCarlo), 
   - the European and the European barrier options the [Heston model](https://github.com/KitAway/HestonModel_MonteCarlo). 
 
@@ -12,23 +12,32 @@ This repository includes F1-optimized implementations of four Monte Carlo financ
 The [Black-Scholes model][Black-Scholes Model], which was first published by Fischer Black and Myron Scholes in 1973, is a well known basic mathematical model describing the behaviour of investment instruments in financial markets. This model focuses on comparing the Return On Investment for one risky asset, whose price is subject to [geometric Brownian motion][geometric Brownian motion] and one riskless asset with a fixed interest rate.
 
 The geometric Brownian behaviour of the price of the risky asset is described by this stochastic differential equation:
+
 ![$$dS=rSdt+\sigma SdW_t$$]
+
 where S is the price of the risky asset (usually called stock price), r is the fixed interest rate of the riskless asset, ![$\sigma$] is the volatility of the stock and ![$W_t$] is a [Wiener process][Wiener process].
 
 According to Ito's Lemma, the analytical solution of this stochastic  differential equation is as follows:
+
 ![$$ S_{t+\Delta t}=S_te^{(r-\frac{1}{2}\sigma^2)\Delta t+\sigma\epsilon\sqrt{\Delta t} } $$]
+
 where ![$\epsilon\sim N(0,1)$],  (the standard normal distribution).
 
 Entering more specifically into the financial sector operations, two styles of stock transaction [options][option] are considered in this implementation of the Black-Scholes model, namely the European vanilla option and Asian option (which is one of the [exotic options][exotic options]).
 [Call options][Call options] and [put options][put options] are defined reciprocally. Given the basic parameters for an option, namely expiration date and strike price, the call/put payoff price could be estimated as follows.
 For the European vanilla option, we have:
+
 ![$$P_{Call}=max\{S-K,0\}\\P_{put}=max\{K-S,0\}$$]
+
 where S is the stock price at the expiration date (estimated by the model above) and K is the strike price.
 For the Asian option, we have:
+
 ![$$P_{Call}=max\{\frac{1}{T}\int_0^TSdt-K,0\}\\P_{put}=max\{K-\frac{1}{T}\int_0^TSdt,0\}$$]
+
 where T is the time period (between now and the option expiration date) , S is the stock price at the expiration date, and K is the strike price.
 
 ### Heston Model
+
 The [Heston model][Heston Model], which was first published by Steven Heston in 1993, is a famous mathematical model describing the behaviour of investment instruments in financial markets. This model focuses on comparing the Return On Investment for one risky asset, whose price and volatility are subject to [geometric Brownian motion][geometric Brownian motion] and one riskless asset with a fixed interest rate.
 
 Two styles of stock transaction [options][option] are considered in this implementation of the Heston model, namely the European vanilla option and European barrier option (which is one of the [exotic options][exotic options]).
@@ -94,11 +103,9 @@ Target device is 'xcvu9p-flgb2104-2-i'
 | Heston | European option |32|2^{24}|256|28|1.52|15% |2.2%|8.2%|8.2%| 26%|
 | Heston | European barrier option |32|2^{23}|256|27|0.75|14%|2.3%|7.8%|8.0%|26%|
 
-## Further information and recompilation
+## Modification and recompilation
 
-Further informations about the optimizations used in this implementation can be found in the paper [High Performance and Low Power Monte Carlo Methods to Option Pricing Models via High Level Design and Synthesis](http://ieeexplore.ieee.org/abstract/document/7920245/).
-
-In all cases, the enclosed Makefile can be used to compile the models. For example:
+The enclosed Makefiles can be used to compile the models and re-create the AFI, after any changes to the source code. For example:
   ```
   cd blackScholes_model/europeanOption
   source <path to SDSoc v2017.1>/.settings64-SDx.sh
@@ -109,6 +116,8 @@ In all cases, the enclosed Makefile can be used to compile the models. For examp
   make TARGETS=hw DEVICES=$AWS_PLATFORM all
   ```
 compiles the code and generates the F1-targeted bitstream for the European option of the Black-Scholes model.
+
+Further informations about the optimizations used in this implementation can be found in the paper [High Performance and Low Power Monte Carlo Methods to Option Pricing Models via High Level Design and Synthesis](http://ieeexplore.ieee.org/abstract/document/7920245/).
 
 [option]: https://en.wikipedia.org/wiki/Option_style
 [exotic options]: https://en.wikipedia.org/wiki/Exotic_option
