@@ -1,10 +1,8 @@
 # Monte Carlo financial models on Amazon F1 instances
 ## Introduction
 This repository includes F1-optimized implementations of four Monte Carlo financial models, in one folder for each model, namely:
-  - the European and the Asian options of the the [Black-Scholes model](https://github.com/KitAway/BlackScholes_MonteCarlo), 
-  - the European and the European barrier options the [Heston model](https://github.com/KitAway/HestonModel_MonteCarlo). 
-
-(see the hyperlinks above in case you need more details about the implementation).
+  - the [European](blackScholes_model/europeanOption) and the [Asian](blackScholes_model/asianOption) options of the the Black-Scholes model, 
+  - the [European](heston_model/europeanOption) and the [European barrier](heston_model/europeanBarrierOption) options of the Heston model. 
 
 ## Theory
 
@@ -118,6 +116,10 @@ The enclosed Makefiles can be used to compile the models and re-create the AFI, 
 compiles the code and generates the F1-targeted bitstream for the European option of the Black-Scholes model.
 
 Further informations about the optimizations used in this implementation can be found in the paper [High Performance and Low Power Monte Carlo Methods to Option Pricing Models via High Level Design and Synthesis](http://ieeexplore.ieee.org/abstract/document/7920245/).
+
+For more details about implementation and optimization, see also these "working" repositories:
+  - [Black-Scholes model](https://github.com/KitAway/BlackScholes_MonteCarlo), 
+  - [Heston model](https://github.com/KitAway/HestonModel_MonteCarlo). 
 
 [option]: https://en.wikipedia.org/wiki/Option_style
 [exotic options]: https://en.wikipedia.org/wiki/Exotic_option
