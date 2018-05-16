@@ -1,0 +1,2 @@
+config_compile -unsafe_math_optimizations
+

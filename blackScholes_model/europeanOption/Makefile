@@ -33,6 +33,7 @@ XCLBINS=$(KERNEL_NAME)
 CLFLAGS=-I$(COMMON_DIR) -I. --kernel $(KERNEL_NAME) 
 CLFLAGS+=--xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s 
 CLFLAGS+=--report estimate
+CLFLAGS+=--xp "prop.solution.hls_pre_tcl=$(COMMON_DIR)/unsafe.tcl" 
 
 # check
 check_EXE=$(KERNEL_NAME)
