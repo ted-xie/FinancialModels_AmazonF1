@@ -32,6 +32,7 @@ $(KERNEL_NAME)_XOS=$(KERNEL_NAME)
 XCLBINS=$(KERNEL_NAME)
 CLFLAGS=-I$(COMMON_DIR) -I. --kernel $(KERNEL_NAME) 
 CLFLAGS+=--xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s 
+CLFLAGS+=--report estimate
 
 # check
 check_EXE=$(KERNEL_NAME)
