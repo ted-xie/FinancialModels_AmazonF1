@@ -1,0 +1,7 @@
+*
+!.gitignore
+!hestonEuroBarrier.cpp
+!main.cpp
+!hestonEuroBarrier.h
+!hestonEuroBarrier.parameters
+!Makefile

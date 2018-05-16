@@ -1,0 +1,6 @@
+*
+!.gitignore
+!blackEuro.cpp
+!blackScholes.cpp
+!blackEuro.parameters
+!Makefile

@@ -23,7 +23,7 @@ endif
 
 
 # Kernel
-DEVICES=$(COMMON_REPO)/../../aws_platform/$(PLATFORM)/$(PLATFORM).xpfm
+DEVICES=xilinx:aws-vu9p-f1:4ddr-xpr-2pr:4.0
 $(KERNEL_NAME)_SRCS=$(KERNEL_NAME).cpp $(COMMON_DIR)/stockData.cpp blackScholes.cpp $(COMMON_DIR)/RNG.cpp
 XOS=$(KERNEL_NAME)
 
@@ -31,7 +31,8 @@ $(KERNEL_NAME)_XOS=$(KERNEL_NAME)
 
 XCLBINS=$(KERNEL_NAME)
 CLFLAGS=-I$(COMMON_DIR) -I. --kernel $(KERNEL_NAME) 
-#CLFLAGS+=--xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s 
+CLFLAGS+=--xp "param:compiler.preserveHlsOutput=1" --xp "param:compiler.generateExtraRunData=true" -s 
+CLFLAGS+=--report estimate
 
 # check
 check_EXE=$(KERNEL_NAME)
